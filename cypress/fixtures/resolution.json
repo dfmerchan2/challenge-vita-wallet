@@ -1,0 +1,68 @@
+[
+  {
+    "device": "iphone-4",
+    "type": "mobile",
+    "width": 320,
+    "height": 480
+  },
+  {
+    "device": "iphone-8",
+    "type": "mobile",
+    "width": 375,
+    "height": 667
+  },
+  {
+    "device": "samsung-note9",
+    "type": "mobile",
+    "width": 414,
+    "height": 846
+  },
+  {
+    "device": "iphone-xr",
+    "type": "mobile",
+    "width": 414,
+    "height": 896
+  },
+  {
+    "device": "ipad-mini",
+    "type": "tablet",
+    "width": 800,
+    "height": 600
+  },
+  {
+    "device": "ipad-2",
+    "type": "tablet",
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "device": "ipad-pro",
+    "type": "tablet",
+    "width": 1023,
+    "height": 1366
+  },
+  {
+    "device": "macbook-11",
+    "type": "disabled",
+    "width": 1366,
+    "height": 768
+  },
+  {
+    "device": "macbook-13",
+    "type": "disabled",
+    "width": 1280,
+    "height": 800
+  },
+  {
+    "device": "macbook-15",
+    "type": "disabled",
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "device": "macbook-16",
+    "type": "fullscreen",
+    "width": 1920,
+    "height": 1080
+  }
+]
