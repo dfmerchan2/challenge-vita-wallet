@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import {getDeviceResolution} from "../utils/viewport-manager";
+import {DEVICE_PROPERTIES} from "../utils/constants";
+
+Cypress.Commands.add("openPage", (device) => {
+    let resolution = getDeviceResolution(device);
+    cy.viewport(resolution[DEVICE_PROPERTIES.WIDTH], resolution[DEVICE_PROPERTIES.HEIGHT]);
+    cy.visit('/')
+});
