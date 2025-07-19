@@ -18,7 +18,7 @@ describe('Login in sauce demo tests', () => {
         cy.openPage(DEVICE_TYPES.TABLET);
     })
 
-    it('should login allow standard user', function () {
+    it('should allow login for a valid standard user', function () {
         const validUser = users.find(user => user.status === USER_TYPES.VALID);
 
         loginPage
@@ -30,7 +30,7 @@ describe('Login in sauce demo tests', () => {
         inventoryPage.isVisible();
     });
 
-    it('should show correct error messages for each invalid user ', function () {
+    it('should display appropriate error messages when login fails with invalid credentials', function () {
         const invalidUsers = users.filter(user => user.status === USER_TYPES.INVALID);
 
         invalidUsers.forEach(data => {
