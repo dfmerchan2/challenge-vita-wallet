@@ -1,5 +1,10 @@
-export function getUsersByStatus(type) {
-    return cy.fixture('users').then(users =>
-        users.find(user => user.status === type)
-    );
+import {USER_TYPES} from "./constants";
+import {getUsers} from "../support/hook";
+
+export function getUserValid() {
+    return getUsers().find(user => user.status === USER_TYPES.VALID);
+}
+
+export function getUsersInvalid() {
+    return getUsers().filter(user => user.status === USER_TYPES.INVALID);
 }

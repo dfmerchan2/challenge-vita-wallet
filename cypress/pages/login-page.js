@@ -33,7 +33,13 @@ class LoginPage {
         return this;
     }
 
-    errorMessageShouldBe(message) {
+    doLogin(user, password) {
+        this.enterUsername(user);
+        this.enterPassword(password);
+        this.clickLoginButton();
+    }
+
+    chackThatErrorMessageIsVisible(message) {
         this.elements.errorMessage()
             .should("be.visible")
             .and('have.text', message)
@@ -41,18 +47,19 @@ class LoginPage {
         return this;
     }
 
-    errorIconShouldBeVisible() {
+    chackThatErrorIconIsVisible() {
         this.elements.errorIcon().should('be.visible');
         return this;
     }
 
-    isVisible() {
-        this.elements.logoLabel().should('be.visible');
-        this.elements.usernameInput().should('be.visible');
-        this.elements.passwordInput().should('be.visible');
-        this.elements.loginButton().should('be.visible');
-        this.elements.credentialsLabel().should('be.visible');
-        this.elements.passwordLabel().should('be.visible');
+    chackThatLoginIsVisible() {
+        cy.shouldBeVisible(
+            this.elements.logoLabel,
+            this.elements.usernameInput,
+            this.elements.passwordInput,
+            this.elements.loginButton,
+            this.elements.credentialsLabel,
+            this.elements.passwordLabel);
         return this;
     }
 }

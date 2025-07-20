@@ -11,9 +11,11 @@ export const DEVICE_PROPERTIES = {
 
 export const URLS = {
     INVENTORY: '/inventory',
-    LOGIN: '/login',
+    INVENTORY_ITEM: '/inventory-item',
     CART: '/cart',
-    CHECKOUT: '/checkout-step-one'
+    CHECKOUT_STEP_ONE: '/checkout-step-one',
+    CHECKOUT_STEP_TWO: '/checkout-step-two',
+    CHECKOUT_COMPLETE: '/checkout-complete'
 };
 
 export const USER_TYPES = {
@@ -24,3 +26,13 @@ export const USER_TYPES = {
 export const COLORS = {
     ERROR_LOGIN: 'rgb(255, 255, 255)',
 };
+
+export const PRODUCT_DATA = {
+    NAME: 'name',
+    DESCRIPTION: 'description',
+    PRICE: 'price',
+}
+
+export const KEY_CONTEXT = {
+    PRODUCTS: 'products',
+}

@@ -1,17 +1,46 @@
-import {URLS as ROUTES} from "../utils/constants";
+import HeaderComponent from './components/header-component';
+import FooterComponent from './components/footer-component';
+import {URLS} from "../utils/constants";
 
 class InventoryPage {
     elements = {
-        logoLabel: () => cy.get(".app_logo"),
-        titleLabel: () => cy.get("[data-test='title']"),
-        burgerMenuButton: () => cy.get("#react-burger-menu-btn"),
+        productsTitle: () => cy.get('[data-test="title"]'),
+        filterButton: () => cy.get('[data-test="product-sort-container"]'),
+        productsImage: () => cy.get('img.inventory_item_img'),
+        productsNameLabel: () => cy.get('[data-test="inventory-item-name"]'),
+        productsPriceLabel: () => cy.get('[data-test="inventory-item-price"]'),
+        addToCartButtons: () => cy.get('[class*="btn_primary"]'),
     }
 
-    isVisible() {
-        cy.url().should('include', ROUTES.INVENTORY);
-        this.elements.logoLabel().should('be.visible');
-        this.elements.titleLabel().should('be.visible');
-        this.elements.burgerMenuButton().should('be.visible');
+    constructor() {
+        this.header = new HeaderComponent();
+        this.foter = new FooterComponent();
+        return this;
+    }
+
+    getHeader() {
+        return this.header;
+    }
+
+    selectTheItem(product) {
+        this.elements.productsNameLabel()
+            .contains(product)
+            .should('be.visible')
+            .click()
+        return this;
+    }
+
+    chackThatInventoryIsVisible() {
+        cy.url().should('include', URLS.INVENTORY);
+        this.header.chackThatHeaderIsVisible();
+        this.foter.chackThatFooterIsVisible();
+        cy.shouldBeVisible(
+            this.elements.productsTitle,
+            this.elements.filterButton,
+            this.elements.productsImage,
+            this.elements.productsNameLabel,
+            this.elements.productsPriceLabel,
+            this.elements.addToCartButtons);
         return this;
     }
 }

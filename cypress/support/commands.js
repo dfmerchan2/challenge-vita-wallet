@@ -32,3 +32,7 @@ Cypress.Commands.add("openPage", (device) => {
     cy.viewport(resolution[DEVICE_PROPERTIES.WIDTH], resolution[DEVICE_PROPERTIES.HEIGHT]);
     cy.visit('/')
 });
+
+Cypress.Commands.add("shouldBeVisible", (...elements) => {
+    elements.forEach(fn => fn().should('be.visible'));
+});

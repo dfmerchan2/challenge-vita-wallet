@@ -3,5 +3,9 @@ declare namespace Cypress {
         openPage(deviceType: string): void;
 
         openPage(): void;
+
+        shouldBeVisible(...elementFns: any[]):void;
+
+        shouldBeVisible(elements: any[]):void;
     }
 }

@@ -1,47 +1,40 @@
 import LoginPage from "../../pages/login-page";
 import InventoryPage from "../../pages/inventory-page";
-import {DEVICE_TYPES, USER_TYPES} from "../../utils/constants";
+import {getUserValid, getUsersInvalid} from "../../utils/get-data";
 
 describe('Login in sauce demo tests', () => {
 
     const loginPage = new LoginPage();
     const inventoryPage = new InventoryPage();
-    let users;
 
-    before(() => {
-        cy.fixture('users').then(data => {
-            users = data;
-        });
-    });
+    it('should login and logout successfully', () => {
+        const validUser = getUserValid();
 
-    beforeEach(() => {
-        cy.openPage(DEVICE_TYPES.TABLET);
-    })
-
-    it('should allow login for a valid standard user', function () {
-        const validUser = users.find(user => user.status === USER_TYPES.VALID);
-
-        loginPage
-            .isVisible()
-            .enterUsername(validUser.user)
+        loginPage.chackThatLoginIsVisible()
+            .enterUsername(validUser.username)
             .enterPassword(validUser.password)
             .clickLoginButton();
 
-        inventoryPage.isVisible();
+        inventoryPage.chackThatInventoryIsVisible()
+            .getHeader()
+            .clickBurgerMenuButton()
+            .chackThatMenuIsVisible()
+            .clickLogoutButton();
+
+        loginPage.chackThatLoginIsVisible();
     });
 
-    it('should display appropriate error messages when login fails with invalid credentials', function () {
-        const invalidUsers = users.filter(user => user.status === USER_TYPES.INVALID);
-
-        invalidUsers.forEach(data => {
+    it('should show error messages for each invalid user type', () => {
+        getUsersInvalid().forEach(data => {
             loginPage
-                .isVisible()
-                .enterUsername(data.user)
+                .chackThatLoginIsVisible()
+                .enterUsername(data.username)
                 .enterPassword(data.password)
                 .clickLoginButton()
-                .errorMessageShouldBe(data.errorMessage)
-                .errorIconShouldBeVisible()
+                .chackThatErrorMessageIsVisible(data.errorMessage)
+                .chackThatErrorIconIsVisible()
                 .clearInputs()
         });
     });
+
 })

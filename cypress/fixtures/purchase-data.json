@@ -1,0 +1,22 @@
+{
+  "userInfo": {
+    "firstName": "Diego",
+    "lastName": "Jimenez",
+    "postalCode": "110111"
+  },
+  "taxRate": 0.08,
+  "productsToBuy": [
+    {
+      "id": 1,
+      "name": "Sauce Labs Backpack"
+    },
+    {
+      "id": 2,
+      "name": "Sauce Labs Bike Light"
+    },
+    {
+      "id": 3,
+      "name": "Sauce Labs Bolt T-Shirt"
+    }
+  ]
+}
