@@ -6,7 +6,7 @@ class FooterComponent {
         copyRightsLabel: () => cy.get('[data-test="footer-copy"]'),
     }
 
-    chackThatFooterIsVisible() {
+    checkThatFooterIsVisible() {
         cy.shouldBeVisible(
             this.elements.logoTwitter,
             this.elements.logoFacebook,

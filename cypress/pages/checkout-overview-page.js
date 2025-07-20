@@ -67,11 +67,11 @@ class CheckoutOverviewPage {
         return this;
     }
 
-    chackThatCheckoutOverviewPageIsVisible() {
+    checkThatCheckoutOverviewPageIsVisible() {
         cy.url().should('include', URLS.CHECKOUT_STEP_TWO);
-        this.header.chackThatHeaderIsVisible();
-        this.foter.chackThatFooterIsVisible();
-        this.listProducts.chackThatListProductsIsVisible();
+        this.header.checkThatHeaderIsVisible();
+        this.foter.checkThatFooterIsVisible();
+        this.listProducts.checkThatListProductsIsVisible();
         cy.shouldBeVisible(
             this.elements.overviewTitle,
             this.elements.paymentInfoLabel,

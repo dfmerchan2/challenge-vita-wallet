@@ -37,10 +37,10 @@ class CheckoutInformationPage {
         this.elements.continueButton().click();
     }
 
-    chackThatCheckoutInformationIsVisible() {
+    checkThatCheckoutInformationIsVisible() {
         cy.url().should('include', URLS.CHECKOUT_STEP_ONE);
-        this.header.chackThatHeaderIsVisible();
-        this.foter.chackThatFooterIsVisible();
+        this.header.checkThatHeaderIsVisible();
+        this.foter.checkThatFooterIsVisible();
         cy.shouldBeVisible(
             this.elements.checkoutYourInformationTitle,
             this.elements.firstNameInput,

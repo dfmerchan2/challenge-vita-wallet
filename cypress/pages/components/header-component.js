@@ -40,7 +40,7 @@ class HeaderComponent {
         this.getMenu().clickLogoutButton()
     }
 
-    chackThatHeaderIsVisible() {
+    checkThatHeaderIsVisible() {
         cy.shouldBeVisible(
             this.elements.burgerMenuButton,
             this.elements.logoLabel,

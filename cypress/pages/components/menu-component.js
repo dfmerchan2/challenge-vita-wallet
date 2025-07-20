@@ -32,7 +32,7 @@ class MenuComponent {
         return this;
     }
 
-    chackThatMenuIsVisible() {
+    checkThatMenuIsVisible() {
         cy.shouldBeVisible(
             this.elements.closeMenuButton,
             this.elements.allItemsButton,

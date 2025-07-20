@@ -10,7 +10,7 @@ describe('Login in sauce demo tests', () => {
     it('should login and logout successfully', () => {
         const validUser = getUserValid();
 
-        loginPage.chackThatLoginIsVisible()
+        loginPage.checkThatLoginIsVisible()
             .enterUsername(validUser.username)
             .enterPassword(validUser.password)
             .clickLoginButton();
@@ -18,21 +18,21 @@ describe('Login in sauce demo tests', () => {
         inventoryPage.chackThatInventoryIsVisible()
             .getHeader()
             .clickBurgerMenuButton()
-            .chackThatMenuIsVisible()
+            .checkThatMenuIsVisible()
             .clickLogoutButton();
 
-        loginPage.chackThatLoginIsVisible();
+        loginPage.checkThatLoginIsVisible();
     });
 
     it('should show error messages for each invalid user type', () => {
         getUsersInvalid().forEach(data => {
             loginPage
-                .chackThatLoginIsVisible()
+                .checkThatLoginIsVisible()
                 .enterUsername(data.username)
                 .enterPassword(data.password)
                 .clickLoginButton()
-                .chackThatErrorMessageIsVisible(data.errorMessage)
-                .chackThatErrorIconIsVisible()
+                .checkThatErrorMessageIsVisible(data.errorMessage)
+                .checkThatErrorIconIsVisible()
                 .clearInputs()
         });
     });

@@ -71,10 +71,10 @@ class ProductPage {
         return this;
     }
 
-    chackThatProductIsVisible() {
+    checkThatProductIsVisible() {
         cy.url().should('include', URLS.INVENTORY_ITEM);
-        this.header.chackThatHeaderIsVisible();
-        this.foter.chackThatFooterIsVisible();
+        this.header.checkThatHeaderIsVisible();
+        this.foter.checkThatFooterIsVisible();
         cy.shouldBeVisible(
             this.elements.backToProductsButton,
             this.elements.productsImage,

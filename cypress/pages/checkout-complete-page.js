@@ -18,10 +18,10 @@ class CheckoutCompletePage {
         return this;
     }
 
-    chackThatCheckoutInformationIsVisible() {
+    checkThatCheckoutInformationIsVisible() {
         cy.url().should('include', URLS.CHECKOUT_COMPLETE);
-        this.header.chackThatHeaderIsVisible();
-        this.foter.chackThatFooterIsVisible();
+        this.header.checkThatHeaderIsVisible();
+        this.foter.checkThatFooterIsVisible();
         cy.shouldBeVisible(
             this.elements.checkoutCompleteTitle,
             this.elements.successfulPurchaseIcon,

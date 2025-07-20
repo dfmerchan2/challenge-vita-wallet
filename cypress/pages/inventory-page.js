@@ -32,8 +32,8 @@ class InventoryPage {
 
     chackThatInventoryIsVisible() {
         cy.url().should('include', URLS.INVENTORY);
-        this.header.chackThatHeaderIsVisible();
-        this.foter.chackThatFooterIsVisible();
+        this.header.checkThatHeaderIsVisible();
+        this.foter.checkThatFooterIsVisible();
         cy.shouldBeVisible(
             this.elements.productsTitle,
             this.elements.filterButton,

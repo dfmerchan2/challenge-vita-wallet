@@ -23,22 +23,24 @@ class ListProductsComponent {
         return this;
     }
 
-    chackThatProductNameIsCorrect() {
+    checkThatProductNameIsCorrect() {
         this.verifyProductData(PRODUCT_DATA.NAME, this.elements.listProductsNameLabel);
         return this;
     }
 
-    chackThatProductDescriptionIsCorrect() {
+    checkThatProductDescriptionIsCorrect() {
         this.verifyProductData(PRODUCT_DATA.DESCRIPTION, this.elements.listProductsDescriptionLabel);
         return this;
     }
 
-    chackThatProductPriceIsCorrect() {
+    checkThatProductPriceIsCorrect() {
         this.verifyProductData(PRODUCT_DATA.PRICE, this.elements.listProductsPriceLabel);
         return this;
     }
 
-    chackThatListProductsIsVisible() {
+
+
+    checkThatListProductsIsVisible() {
         cy.shouldBeVisible(
             this.elements.qualityLabel,
             this.elements.descriptionLabel,

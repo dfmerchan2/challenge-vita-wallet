@@ -39,7 +39,7 @@ class LoginPage {
         this.clickLoginButton();
     }
 
-    chackThatErrorMessageIsVisible(message) {
+    checkThatErrorMessageIsVisible(message) {
         this.elements.errorMessage()
             .should("be.visible")
             .and('have.text', message)
@@ -47,12 +47,12 @@ class LoginPage {
         return this;
     }
 
-    chackThatErrorIconIsVisible() {
+    checkThatErrorIconIsVisible() {
         this.elements.errorIcon().should('be.visible');
         return this;
     }
 
-    chackThatLoginIsVisible() {
+    checkThatLoginIsVisible() {
         cy.shouldBeVisible(
             this.elements.logoLabel,
             this.elements.usernameInput,

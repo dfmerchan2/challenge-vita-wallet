@@ -25,7 +25,7 @@ describe('Buy products', () => {
 
         purchaseData.productsToBuy.forEach((product, index) => {
             inventoryPage.selectTheItem(product.name)
-            productPage.chackThatProductIsVisible()
+            productPage.checkThatProductIsVisible()
                 .saveProductData(index)
                 .clickAddToCartButton()
                 .checkThatItemQuantityIsCorrect(product.id)
@@ -34,23 +34,23 @@ describe('Buy products', () => {
         })
 
         inventoryPage.getHeader().clickShoppingCartButton()
-        cartPage.chackThatCartIsVisible()
+        cartPage.checkThatCartIsVisible()
             .getListProducts()
-            .chackThatProductNameIsCorrect()
-            .chackThatProductDescriptionIsCorrect()
-            .chackThatProductPriceIsCorrect();
+            .checkThatProductNameIsCorrect()
+            .checkThatProductDescriptionIsCorrect()
+            .checkThatProductPriceIsCorrect();
         cartPage.clickCheckoutButton();
-        checkoutInformationPage.chackThatCheckoutInformationIsVisible()
+        checkoutInformationPage.checkThatCheckoutInformationIsVisible()
             .enterFirstName(purchaseData.userInfo.firstName)
             .enterLastName(purchaseData.userInfo.lastName)
             .enterPostalCode(purchaseData.userInfo.postalCode)
             .clickContinueButton()
-        checkoutOverviewPage.chackThatCheckoutOverviewPageIsVisible()
+        checkoutOverviewPage.checkThatCheckoutOverviewPageIsVisible()
             .checkThatItemTotalIsCorrect()
             .checkThatTaxIsCorrect(purchaseData.taxRate)
             .checkThatTotalIsCorrect(purchaseData.taxRate)
             .clickFinishButton()
-        checkoutCompletePage.chackThatCheckoutInformationIsVisible()
+        checkoutCompletePage.checkThatCheckoutInformationIsVisible()
 
 
     })

@@ -26,11 +26,11 @@ class CartPage {
         return this;
     }
 
-    chackThatCartIsVisible() {
+    checkThatCartIsVisible() {
         cy.url().should('include', URLS.CART);
-        this.header.chackThatHeaderIsVisible();
-        this.foter.chackThatFooterIsVisible();
-        this.listProducts.chackThatListProductsIsVisible();
+        this.header.checkThatHeaderIsVisible();
+        this.foter.checkThatFooterIsVisible();
+        this.listProducts.checkThatListProductsIsVisible();
         cy.shouldBeVisible(
             this.elements.yourCartTitle,
             this.elements.continueShoppingButton,
