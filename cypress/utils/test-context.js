@@ -1,23 +1,23 @@
 class TestContext {
-    constructor() {
-        this.store = new Map();
-    }
+  constructor() {
+    this.store = new Map();
+  }
 
-    set(key, value) {
-        this.store.set(key, value);
-    }
+  set(key, value) {
+    this.store.set(key, value);
+  }
 
-    get(key) {
-        return this.store.get(key);
-    }
+  get(key) {
+    return this.store.get(key);
+  }
 
-    clear() {
-        this.store.clear();
-    }
+  clear() {
+    this.store.clear();
+  }
 
-    has(key) {
-        return this.store.has(key);
-    }
+  has(key) {
+    return this.store.has(key);
+  }
 }
 
 export const testContext = new TestContext();
