@@ -20,7 +20,7 @@ class ProductPage {
         return this;
     }
 
-    clickBackToProductsButton() {
+    goBackToProducts() {
         this.elements.backToProductsButton().click();
         return this;
     }
@@ -68,6 +68,18 @@ class ProductPage {
             testContext.set(KEY_CONTEXT.PRODUCTS, productList);
         });
 
+        return this;
+    }
+
+    addProductToTheShoppingCart(index) {
+        this.saveProductData(index)
+        this.clickAddToCartButton()
+        return this;
+    }
+
+    checkThatProductIsAddedSuccessfully(quality) {
+        this.checkThatItemQuantityIsCorrect(quality);
+        this.checkThatRemoveProductButtonIsVisible();
         return this;
     }
 

@@ -1,9 +1,10 @@
 import HeaderComponent from "./components/header-component";
 import FooterComponent from "./components/footer-component";
 import {KEY_CONTEXT, URLS} from "../utils/constants";
-import ListProductsComponent from "./components/list-products-component";
+import ProductsComponent from "./components/products-component";
 import {testContext} from "../utils/test-context";
 import {calculateTax, calculateTotal} from "../utils/math";
+import CheckoutCompletePage from "./checkout-complete-page";
 
 class CheckoutOverviewPage {
 
@@ -24,7 +25,7 @@ class CheckoutOverviewPage {
     constructor() {
         this.header = new HeaderComponent();
         this.foter = new FooterComponent();
-        this.listProducts = new ListProductsComponent();
+        this.products = new ProductsComponent();
         return this;
     }
 
@@ -62,16 +63,30 @@ class CheckoutOverviewPage {
         return this;
     }
 
-    clickFinishButton() {
+    finishPurchase() {
         this.elements.finishButton().click();
+        return new CheckoutCompletePage;
+    }
+
+    checkThatThePaymentInformationIsCorrect(taxRate){
+        this.checkThatItemTotalIsCorrect();
+        this.checkThatTaxIsCorrect(taxRate);
+        this.checkThatTotalIsCorrect(taxRate);
         return this;
+    }
+
+    checkThatProductInformationIsCorrect(){
+        this.products.checkThatProductNameIsCorrect()
+        this.products.checkThatProductDescriptionIsCorrect()
+        this.products.checkThatProductPriceIsCorrect()
+        return this
     }
 
     checkThatCheckoutOverviewPageIsVisible() {
         cy.url().should('include', URLS.CHECKOUT_STEP_TWO);
         this.header.checkThatHeaderIsVisible();
         this.foter.checkThatFooterIsVisible();
-        this.listProducts.checkThatListProductsIsVisible();
+        this.products.checkThatListProductsIsVisible();
         cy.shouldBeVisible(
             this.elements.overviewTitle,
             this.elements.paymentInfoLabel,

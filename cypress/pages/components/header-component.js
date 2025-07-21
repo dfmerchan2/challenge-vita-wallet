@@ -18,7 +18,7 @@ class HeaderComponent {
         return new MenuComponent();
     }
 
-    clickShoppingCartButton() {
+    goToShoppingCart() {
         this.elements.shoppingCartButton().click();
         return this;
     }

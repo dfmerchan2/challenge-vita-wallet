@@ -7,6 +7,7 @@ import CheckoutInformationPage from "../../pages/checkout-information-page";
 import CheckoutOverviewPage from "../../pages/checkout-overview-page";
 import CheckoutCompletePage from "../../pages/checkout-complete-page";
 import {getUserValid} from "../../utils/get-data";
+import {addProductsToCart, removeAllProductsFromCart} from "../../support/base-test";
 
 describe('Buy products', () => {
 
@@ -18,41 +19,42 @@ describe('Buy products', () => {
     const checkoutOverviewPage = new CheckoutOverviewPage();
     const checkoutCompletePage = new CheckoutCompletePage();
 
-    it('should buy products', () => {
+    beforeEach(() => {
         const user = getUserValid();
-
         loginPage.doLogin(user.username, user.password);
+    });
 
-        purchaseData.productsToBuy.forEach((product, index) => {
-            inventoryPage.selectTheItem(product.name)
-            productPage.checkThatProductIsVisible()
-                .saveProductData(index)
-                .clickAddToCartButton()
-                .checkThatItemQuantityIsCorrect(product.id)
-                .checkThatRemoveProductButtonIsVisible()
-                .clickBackToProductsButton()
-        })
+    it('should complete purchase of selected products', () => {
+        addProductsToCart(purchaseData.productsToBuy, inventoryPage, productPage);
 
-        inventoryPage.getHeader().clickShoppingCartButton()
+        inventoryPage.getHeader().goToShoppingCart()
+
         cartPage.checkThatCartIsVisible()
-            .getListProducts()
-            .checkThatProductNameIsCorrect()
-            .checkThatProductDescriptionIsCorrect()
-            .checkThatProductPriceIsCorrect();
-        cartPage.clickCheckoutButton();
+            .checkThatProductInformationIsCorrect()
+            .goTOCheckoutYourInformation();
+
         checkoutInformationPage.checkThatCheckoutInformationIsVisible()
-            .enterFirstName(purchaseData.userInfo.firstName)
-            .enterLastName(purchaseData.userInfo.lastName)
-            .enterPostalCode(purchaseData.userInfo.postalCode)
-            .clickContinueButton()
+            .enterYourInformation(purchaseData.userInfo)
+            .goToCheckoutOverview();
+
         checkoutOverviewPage.checkThatCheckoutOverviewPageIsVisible()
-            .checkThatItemTotalIsCorrect()
-            .checkThatTaxIsCorrect(purchaseData.taxRate)
-            .checkThatTotalIsCorrect(purchaseData.taxRate)
-            .clickFinishButton()
+            .checkThatProductInformationIsCorrect()
+            .checkThatThePaymentInformationIsCorrect(purchaseData.taxRate)
+            .finishPurchase()
+
         checkoutCompletePage.checkThatCheckoutInformationIsVisible()
-
-
     })
+
+    it('should remove a product from the shopping cart', () => {
+        addProductsToCart(purchaseData.productsToBuy, inventoryPage, productPage);
+
+        inventoryPage.getHeader().goToShoppingCart()
+
+        removeAllProductsFromCart(cartPage, purchaseData.productsToBuy)
+
+        cartPage.goToContinueShopping()
+        inventoryPage.chackThatInventoryIsVisible()
+    });
+
 })
 

@@ -37,6 +37,7 @@ class LoginPage {
         this.enterUsername(user);
         this.enterPassword(password);
         this.clickLoginButton();
+        return this;
     }
 
     checkThatErrorMessageIsVisible(message) {

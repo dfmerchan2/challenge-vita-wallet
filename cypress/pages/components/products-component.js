@@ -1,8 +1,9 @@
 import {testContext} from "../../utils/test-context";
 import {KEY_CONTEXT, PRODUCT_DATA} from "../../utils/constants";
 
-class ListProductsComponent {
+class ProductsComponent {
     elements = {
+        quantityProducts: () => cy.get('[data-test="inventory-item"]'),
         qualityLabel: () => cy.get('[data-test="cart-quantity-label"]'),
         descriptionLabel: () => cy.get('[data-test="cart-desc-label"]'),
         listProductsQuantityLabel: () => cy.get('[data-test="item-quantity"]'),
@@ -38,7 +39,14 @@ class ListProductsComponent {
         return this;
     }
 
+    removeProductFromTheShoppingCart(index = 0) {
+        this.elements.removeProductButton().eq(index).click();
+    }
 
+    checkThatTheQuantityProducts(quantity) {
+        this.elements.quantityProducts().should('have.length', quantity);
+        return this;
+    }
 
     checkThatListProductsIsVisible() {
         cy.shouldBeVisible(
@@ -52,4 +60,4 @@ class ListProductsComponent {
     }
 }
 
-export default ListProductsComponent;
+export default ProductsComponent;

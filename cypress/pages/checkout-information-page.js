@@ -1,6 +1,7 @@
 import HeaderComponent from "./components/header-component";
 import FooterComponent from "./components/footer-component";
 import {URLS} from "../utils/constants";
+import CheckoutOverviewPage from "./checkout-overview-page";
 
 class CheckoutInformationPage {
     elements = {
@@ -33,8 +34,15 @@ class CheckoutInformationPage {
         return this;
     }
 
-    clickContinueButton() {
+    goToCheckoutOverview() {
         this.elements.continueButton().click();
+    }
+
+    enterYourInformation(userInfo) {
+        this.enterFirstName(userInfo.firstName);
+        this.enterLastName(userInfo.lastName);
+        this.enterPostalCode(userInfo.postalCode);
+        return this;
     }
 
     checkThatCheckoutInformationIsVisible() {

@@ -11,9 +11,7 @@ describe('Login in sauce demo tests', () => {
         const validUser = getUserValid();
 
         loginPage.checkThatLoginIsVisible()
-            .enterUsername(validUser.username)
-            .enterPassword(validUser.password)
-            .clickLoginButton();
+            .doLogin(validUser.username, validUser.password)
 
         inventoryPage.chackThatInventoryIsVisible()
             .getHeader()
@@ -28,9 +26,7 @@ describe('Login in sauce demo tests', () => {
         getUsersInvalid().forEach(data => {
             loginPage
                 .checkThatLoginIsVisible()
-                .enterUsername(data.username)
-                .enterPassword(data.password)
-                .clickLoginButton()
+                .doLogin(data.username, data.password)
                 .checkThatErrorMessageIsVisible(data.errorMessage)
                 .checkThatErrorIconIsVisible()
                 .clearInputs()

@@ -1,7 +1,7 @@
 import {URLS} from "../utils/constants";
 import FooterComponent from "./components/footer-component";
 import HeaderComponent from "./components/header-component";
-import ListProductsComponent from "./components/list-products-component";
+import ProductsComponent from "./components/products-component";
 
 class CartPage {
     elements = {
@@ -13,24 +13,36 @@ class CartPage {
     constructor() {
         this.header = new HeaderComponent();
         this.foter = new FooterComponent();
-        this.listProducts = new ListProductsComponent();
+        this.products = new ProductsComponent();
         return this;
     }
 
-    getListProducts() {
-        return this.listProducts;
+    goToContinueShopping() {
+        this.elements.continueShoppingButton().click();
+        return this;
     }
 
-    clickCheckoutButton() {
+    getProducts() {
+        return this.products;
+    }
+
+    goTOCheckoutYourInformation() {
         this.elements.checkoutButton().click();
         return this;
+    }
+
+    checkThatProductInformationIsCorrect(){
+        this.products.checkThatProductNameIsCorrect()
+        this.products.checkThatProductDescriptionIsCorrect()
+        this.products.checkThatProductPriceIsCorrect()
+        return this
     }
 
     checkThatCartIsVisible() {
         cy.url().should('include', URLS.CART);
         this.header.checkThatHeaderIsVisible();
         this.foter.checkThatFooterIsVisible();
-        this.listProducts.checkThatListProductsIsVisible();
+        this.products.checkThatListProductsIsVisible();
         cy.shouldBeVisible(
             this.elements.yourCartTitle,
             this.elements.continueShoppingButton,
