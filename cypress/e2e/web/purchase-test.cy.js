@@ -7,7 +7,7 @@ import CheckoutInformationPage from '../../pages/checkout-information-page';
 import CheckoutOverviewPage from '../../pages/checkout-overview-page';
 import CheckoutCompletePage from '../../pages/checkout-complete-page';
 import { getUserValid } from '../../utils/get-data';
-import { addProductsToCart, removeAllProductsFromCart } from '../../support/base-test';
+import { addProductsToCart, removeAllProductsFromCart } from '../../support/base-web-test';
 
 describe('Buy products', () => {
   const loginPage = new LoginPage();

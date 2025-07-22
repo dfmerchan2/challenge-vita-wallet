@@ -1,5 +1,5 @@
 import resolution from '../fixtures/resolution.json';
-import { getNumberRandom } from './random-data';
+import { getNumberRandom } from './data-generator';
 
 export function getDeviceResolution(type) {
   const listDevices = resolution.filter((device) => device.type === type);

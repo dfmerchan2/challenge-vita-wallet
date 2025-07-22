@@ -24,15 +24,32 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import { getDeviceResolution } from '../utils/viewport-manager';
-import { DEVICE_PROPERTIES } from '../utils/constants';
+import {getDeviceResolution} from '../utils/viewport-manager';
+import {DEVICE_PROPERTIES} from '../utils/constants';
+import {WAITING_TIMES} from "../utils/constants-api";
 
 Cypress.Commands.add('openPage', (device) => {
-  let resolution = getDeviceResolution(device);
-  cy.viewport(resolution[DEVICE_PROPERTIES.WIDTH], resolution[DEVICE_PROPERTIES.HEIGHT]);
-  cy.visit(Cypress.env('apiBaseUrlWeb'));
+    let resolution = getDeviceResolution(device);
+    cy.viewport(resolution[DEVICE_PROPERTIES.WIDTH], resolution[DEVICE_PROPERTIES.HEIGHT]);
+    cy.visit(Cypress.env('apiBaseUrlWeb'));
 });
 
 Cypress.Commands.add('shouldBeVisible', (...elements) => {
-  elements.forEach((fn) => fn().should('be.visible'));
+    elements.forEach((fn) => fn().should('be.visible'));
+});
+
+
+Cypress.Commands.add('retryRequest', (options, status, delay = WAITING_TIMES.LOW, retries = 5) => {
+    function makeRequest(remainingRetries) {
+        return cy.request({...options, failOnStatusCode: false}).then((response) => {
+            if (response.status === status) {
+                return response;
+            } else if (remainingRetries > 0) {
+                cy.log(`Retrying... remaining attempts: ${remainingRetries}`);
+                return cy.wait(delay).then(() => makeRequest(remainingRetries - 1));
+            }
+        });
+    }
+
+    return makeRequest(retries);
 });
