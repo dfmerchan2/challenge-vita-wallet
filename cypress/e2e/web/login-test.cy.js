@@ -1,10 +1,13 @@
 import LoginPage from '../../pages/login-page';
 import InventoryPage from '../../pages/inventory-page';
 import { getUserValid, getUsersInvalid } from '../../utils/get-data';
+import { setupWeb } from '../../support/base-web-test';
 
 describe('Login in sauce demo tests', () => {
   const loginPage = new LoginPage();
   const inventoryPage = new InventoryPage();
+
+  setupWeb();
 
   it('should login and logout successfully', () => {
     const validUser = getUserValid();
