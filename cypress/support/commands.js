@@ -33,7 +33,7 @@ Cypress.Commands.add('openPage', (device) => {
   cy.visit(Cypress.env('apiBaseUrlWeb'));
 });
 
-Cypress.Commands.add("setResolution", (device) => {
+Cypress.Commands.add('setResolution', (device) => {
   let resolution = getDeviceResolution(Cypress.env('device') || device);
   cy.viewport(resolution[DEVICE_PROPERTIES.WIDTH], resolution[DEVICE_PROPERTIES.HEIGHT]);
 });
