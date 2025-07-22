@@ -6,12 +6,23 @@
   "scripts": {
     "open": "cypress open",
     "test": "cypress run",
+    "test:headed:allure": "cypress run --env allure=true --headed",
+    "test:allure": "cypress run --env allure=true",
     "test:web": "cypress run --spec 'cypress/e2e/web/**/*.cy.js'",
     "test:api": "cypress run --spec 'cypress/e2e/api/**/*.cy.js'",
-    "format": "prettier --write ."
+    "test:web:allure": "cypress run --spec 'cypress/e2e/web/**/*.cy.js' --env allure=true",
+    "test:api:allure": "cypress run --spec 'cypress/e2e/api/**/*.cy.js' --env allure=true",
+    "format": "prettier --write .",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report"
+  },
+  "allure": {
+    "outputDir": "allure-results"
   },
   "private": true,
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.41.2",
+    "allure-commandline": "^2.34.1",
     "cypress": "^14.5.2",
     "prettier": "^3.6.2"
   }
