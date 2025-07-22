@@ -1,28 +1,26 @@
-import {DataGenerator} from "../../utils/data-generator";
+import { DataGenerator } from '../../utils/data-generator';
 
 export class Tag {
-    tag = {
-        id: null,
-        name: ''
-    };
+  tag = {
+    id: null,
+    name: '',
+  };
 
-    withId(id) {
-        this.tag.id = id;
-        return this;
-    }
+  withId(id) {
+    this.tag.id = id;
+    return this;
+  }
 
-    withName(name) {
-        this.tag.name = name;
-        return this;
-    }
+  withName(name) {
+    this.tag.name = name;
+    return this;
+  }
 
-    build() {
-        return this.tag;
-    }
+  build() {
+    return this.tag;
+  }
 
-    static getRequest() {
-        return new Tag()
-            .withId(DataGenerator.randomId(1))
-            .withName(DataGenerator.randomFirstName());
-    }
+  static getRequest() {
+    return new Tag().withId(DataGenerator.randomId(1)).withName(DataGenerator.randomFirstName());
+  }
 }

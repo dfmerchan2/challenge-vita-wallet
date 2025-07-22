@@ -1,28 +1,28 @@
-import {DataGenerator} from "../../utils/data-generator";
+import { DataGenerator } from '../../utils/data-generator';
 
 export class Category {
-    category = {
-        id: null,
-        name: ''
-    };
+  category = {
+    id: null,
+    name: '',
+  };
 
-    withId(id) {
-        this.category.id = id;
-        return this;
-    }
+  withId(id) {
+    this.category.id = id;
+    return this;
+  }
 
-    withName(name) {
-        this.category.name = name;
-        return this;
-    }
+  withName(name) {
+    this.category.name = name;
+    return this;
+  }
 
-    build() {
-        return this.category;
-    }
+  build() {
+    return this.category;
+  }
 
-    static getRequest() {
-        return new Category()
-            .withId(DataGenerator.randomId(1))
-            .withName(DataGenerator.randomFirstName());
-    }
+  static getRequest() {
+    return new Category()
+      .withId(DataGenerator.randomId(1))
+      .withName(DataGenerator.randomFirstName());
+  }
 }
