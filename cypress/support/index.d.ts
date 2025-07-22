@@ -7,5 +7,7 @@ declare namespace Cypress {
     shouldBeVisible(...elementFns: any[]): void;
 
     shouldBeVisible(elements: any[]): void;
+
+    setResolution(deviceResolution: any): void;
   }
 }

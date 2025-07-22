@@ -29,9 +29,13 @@ import { DEVICE_PROPERTIES } from '../utils/constants';
 import { WAITING_TIMES } from '../utils/constants-api';
 
 Cypress.Commands.add('openPage', (device) => {
-  let resolution = getDeviceResolution(device);
-  cy.viewport(resolution[DEVICE_PROPERTIES.WIDTH], resolution[DEVICE_PROPERTIES.HEIGHT]);
+  cy.setResolution(device);
   cy.visit(Cypress.env('apiBaseUrlWeb'));
+});
+
+Cypress.Commands.add("setResolution", (device) => {
+  let resolution = getDeviceResolution(Cypress.env('device') || device);
+  cy.viewport(resolution[DEVICE_PROPERTIES.WIDTH], resolution[DEVICE_PROPERTIES.HEIGHT]);
 });
 
 Cypress.Commands.add('shouldBeVisible', (...elements) => {
