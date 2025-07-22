@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "open": "cypress open",
+    "test": "cypress run",
+    "test:web": "cypress run --spec 'cypress/e2e/web/**/*.cy.js'",
+    "test:api": "cypress run --spec 'cypress/e2e/api/**/*.cy.js'",
     "format": "prettier --write ."
   },
   "private": true,
