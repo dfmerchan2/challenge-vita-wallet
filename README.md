@@ -1,19 +1,19 @@
-# 🧪 Cypress Automation Project - Vita Wallet Challenge
+# Cypress Automation - Vita Wallet Challenge
 
-Este repositorio contiene pruebas automatizadas **End-to-End (E2E)** y **API**
-utilizando [Cypress](https://www.cypress.io/) con integración de reportes en **Allure**. El proyecto está estructurado
-por tipo de test y soporta múltiples resoluciones de pantalla (`mobile`, `tablet`, `fullscreen`).
+Este repositorio contiene pruebas automatizadas **WEB** y **API**
+utilizando [Cypress](https://www.cypress.io/) con integración de reportes en **[Allure](https://allurereport.org/)**.
 
 ---
 
 ## 🛠️ Tecnologías y herramientas utilizadas
+
 * **Lenguaje:** JavaScript
 * **Framework:** Cypress
 * **Reportes:** Allure
 * **Code style:** Prettier
-* Patrones de diseño: 
-  * Page Object Model (POM)
-  * Builder (Manejo de data)
+* Patrones de diseño:
+    * Page Object Model (POM)
+    * Builder (Manejo de data)
 
 ---
 
@@ -45,7 +45,7 @@ Antes de ejecutar las pruebas, asegúrate de tener configurado tu entorno correc
 
    **`npm install`**
 
-5. (Opcional) Verifica que Cypress se abre correctamente
+5. Verifica que Cypress se abre correctamente
 
    **`npm run open `**
 
@@ -57,7 +57,7 @@ Antes de ejecutar las pruebas, asegúrate de tener configurado tu entorno correc
 ├── cypress/             
 │   ├── apis/              # Consumo de servicios REST (GET, POST, PUT, DELETE)
 │   ├── builders/          # Generadores (builders) para modelar la data
-│   ├── e2e/               # Test de extremo a extremo
+│   ├── e2e/               # Pruebas de extremo a extremo
 │   │   ├── api/           # Tests de API
 │   │   └── web/           # Tests de Web
 │   ├── fixtures/          # Archivos JSON con datos de prueba
@@ -93,10 +93,10 @@ Antes de ejecutar las pruebas, asegúrate de tener configurado tu entorno correc
 |------------------------------|--------------------------------------------------------------------|
 | `npm run test:allure`        | Ejecuta todos los tests con reporte de Allure                      |
 | `npm run test:headed:allure` | Ejecuta todos los tests con reporte de Allure, pero en modo headed |
-| `npm run test:web:allure`    | Ejecuta solo test de Web con Allure                                |
+| `npm run test:web:allure`    | Ejecuta solo pruebas de Web con Allure                             |
 | `npm run test:api:allure`    | Ejecuta solo test de API con Allure                                |
 
-### Ejecutar test de Web por tipo de dispositivo (con Allure)
+### Ejecutar pruebas Web por tipo de dispositivo (con Allure)
 
 | Comando                          | Descripción                                    |
 |----------------------------------|------------------------------------------------|
@@ -113,15 +113,16 @@ Antes de ejecutar las pruebas, asegúrate de tener configurado tu entorno correc
 
 ### Utilidades
 
-| Comando          | Descripción                                     |
-|------------------|-------------------------------------------------|
-| `npm run format` | Formatea automáticamente el código con Prettier |
+| Comando          | Descripción                               |
+|------------------|-------------------------------------------|
+| `npm run format` | Formatea el código fuente usando Prettier |
 
 ---
 
 ## 🎬 Demo
 
-Haz clic en la imagen o en este [enlace](https://www.youtube.com/watch?v=rTsfn8OExko) para ver una demostración del proyecto:
+Haz clic en la imagen o en este [enlace](https://www.youtube.com/watch?v=rTsfn8OExko) para ver una demostración del
+proyecto:
 
 [![Ver la demo en YouTube](https://img.youtube.com/vi/rTsfn8OExko/0.jpg)](https://www.youtube.com/watch?v=rTsfn8OExko)
 
